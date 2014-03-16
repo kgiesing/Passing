@@ -29,6 +29,8 @@ class ConcreteBase
          */
         virtual void setVal(int val) { _val = val; }
     protected:
+        /** Protected, empty, default constructor */
+        ConcreteBase(void) { }
         int _val; //!< Member variable "_val"
 };
 

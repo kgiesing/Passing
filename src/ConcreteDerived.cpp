@@ -1,4 +1,7 @@
 #include "ConcreteDerived.h"
+#include <iostream>
+
+using std::cout;
 
 ConcreteDerived::ConcreteDerived(int val, double scale) : ConcreteBase(val), _scale(scale)
 {
@@ -8,16 +11,16 @@ ConcreteDerived::ConcreteDerived(int val, double scale) : ConcreteBase(val), _sc
 ConcreteDerived::~ConcreteDerived()
 {
     cout << "\n\t\t~ConcreteDerived@" << this << "()";
-    _double = 0;
+    _scale = 0;
 }
 ConcreteDerived::ConcreteDerived(const ConcreteDerived& other)
 {
-    cout << "\n\t\tConcreteDerived@" << "(@" << &rhs << ")";
-    _val = rhs._val;
-    _scale = rhs._scale;
+    cout << "\n\t\tConcreteDerived@" << "(@" << &other << ")";
+    _val = other._val;
+    _scale = other._scale;
 }
 
-ConcreteDerived ConcreteDerived::operator=(const ConcreteDerived& other)
+ConcreteDerived& ConcreteDerived::operator=(const ConcreteDerived& rhs)
 {
     cout << "\n\t\tConcreteDerived@" << this << " = @" << &rhs;
     // handle self assignment

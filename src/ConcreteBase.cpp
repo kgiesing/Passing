@@ -16,8 +16,8 @@ ConcreteBase::~ConcreteBase()
 
 ConcreteBase::ConcreteBase(const ConcreteBase& other)
 {
-    cout << "\n\t\tConcreteBase@" << "(@" << &rhs << ")";
-    _val = rhs._val;
+    cout << "\n\t\tConcreteBase@" << "(@" << &other << ")";
+    _val = other._val;
 }
 
 ConcreteBase& ConcreteBase::operator=(const ConcreteBase& rhs)
