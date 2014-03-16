@@ -1,6 +1,7 @@
 #ifndef CONCRETEBASE_H
 #define CONCRETEBASE_H
 
+#include <iostream>
 
 class ConcreteBase
 {
@@ -15,11 +16,13 @@ class ConcreteBase
          *  @param other Object to copy from
          */
         ConcreteBase(const ConcreteBase& other);
-        /** Assignment operator
+        /** Overloaded assignment operator
          *  @param other Object to assign from
          *  @return A reference to this
          */
         ConcreteBase& operator=(const ConcreteBase& other);
+        /** Overloaded stream extraction operator */
+        friend std::ostream& operator<<(std::ostream&, const ConcreteBase&);
         /** Access value
          * @return The current value
          */
