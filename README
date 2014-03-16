@@ -1,0 +1,9 @@
+
+This project demonstrates the various forms of passing and returning objects:
+- By value
+- By reference
+- By pointer ("simulated reference")
+
+It will show what happens when concrete base classes and concrete subclasses are passed in these manners.
+
+Output will be displayed on the console.
