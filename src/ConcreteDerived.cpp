@@ -5,7 +5,7 @@ using std::cout;
 
 ConcreteDerived::ConcreteDerived(int val, double scale) : ConcreteBase(val), _scale(scale)
 {
-    cout << "\n\t\t@" << *this << "(" << val << ")";
+    cout << "\n\t\t" << *this << "(" << val << "," << scale << ")";
 }
 
 ConcreteDerived::~ConcreteDerived()
@@ -34,6 +34,6 @@ ConcreteDerived& ConcreteDerived::operator=(const ConcreteDerived& rhs)
 
 std::ostream& operator<<(std::ostream& out, const ConcreteDerived& v)
 {
-    out << "ConcreteDerived@" << &v << ":" << v._val << "*" << v._scale;
+    out << "ConcreteDerived@" << &v << ":" << v._val << "|" << v._scale;
     return out;
 }

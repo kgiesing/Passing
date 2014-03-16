@@ -159,13 +159,13 @@ void doReturnByReference(void)
 {
     cout << "\n__________Return By Reference__________" << endl;
 
-    cout << "\nCreating base reference, rb, "
-         << "to returned function-local base object:";
+    cout << "\nInitializing base reference, rb, "
+         << "with returned function-local base object:";
     ConcreteBase& rb = returnBaseByReference();
     cout << "\nAfter return, rb references: " << rb << endl;
 
-    cout << "\nCreating derived reference, pd, "
-         << "to returned function-local derived object:";
+    cout << "\nInitializing derived reference, pd, "
+         << "with returned function-local derived object:";
     ConcreteDerived& rd = returnDerivedByReference();
     cout << "\nAfter return, rd references: " << rd << endl;
 
