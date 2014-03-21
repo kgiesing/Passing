@@ -3,7 +3,7 @@
 
 using std::cout;
 
-void passByPointer(ConcreteBase* p)
+void passBaseByPointer(ConcreteBase* p)
 {
     cout << "\n\tpassByPointer(*" << *p << ")"
          << "\n\tAssigning object with value of 'P':";
@@ -11,7 +11,7 @@ void passByPointer(ConcreteBase* p)
     cout << "\n\tReturning...";
 }
 
-void passByPointer(ConcreteDerived* p)
+void passDerivedByPointer(ConcreteDerived* p)
 {
     cout << "\n\tpassByPointer(*" << *p << ")"
          << "\n\tAssigning object with value of 'P', scale of 0.5:";
@@ -19,7 +19,7 @@ void passByPointer(ConcreteDerived* p)
     cout << "\n\tReturning...";
 }
 
-void passByReference(ConcreteBase& r)
+void passBaseByReference(ConcreteBase& r)
 {
     cout << "\n\tpassByReference(&" << r << ")"
          << "\n\tAssigning object with value of 'R':";
@@ -27,7 +27,7 @@ void passByReference(ConcreteBase& r)
     cout << "\n\tReturning...";
 }
 
-void passByReference(ConcreteDerived& r)
+void passDerivedByReference(ConcreteDerived& r)
 {
     cout << "\n\tpassByReference(&" << r << ")"
          << "\n\tAssigning object with value of 'R', scale of 0.5:";
@@ -35,7 +35,7 @@ void passByReference(ConcreteDerived& r)
     cout << "\n\tReturning...";
 }
 
-void passByValue(ConcreteBase v)
+void passBaseByValue(ConcreteBase v)
 {
     cout << "\n\tpassByValue(" << v << ")"
          << "\n\tAssigning object with value of 'V':";
@@ -43,7 +43,7 @@ void passByValue(ConcreteBase v)
     cout << "\n\tReturning...";
 }
 
-void passByValue(ConcreteDerived v)
+void passDerivedByValue(ConcreteDerived v)
 {
     cout << "\n\tpassByValue(" << v << ")"
          << "\n\tAssigning object with value of 'V':";

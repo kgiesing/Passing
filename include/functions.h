@@ -5,17 +5,17 @@
 #include "ConcreteDerived.h"
 
 /** Pass a concrete base class by simulated reference (pointer) */
-void passByPointer(ConcreteBase*);
+void passBaseByPointer(ConcreteBase*);
 /** Pass a concrete derived class by simulated reference (pointer) */
-void passByPointer(ConcreteDerived*);
+void passDerivedByPointer(ConcreteDerived*);
 /** Pass a concrete base class by reference */
-void passByReference(ConcreteBase&);
+void passBaseByReference(ConcreteBase&);
 /** Pass a concrete derived class by reference */
-void passByReference(ConcreteDerived&);
+void passDerivedByReference(ConcreteDerived&);
 /** Pass a concrete base class by value */
-void passByValue(ConcreteBase);
+void passBaseByValue(ConcreteBase);
 /** Pass a concrete derived class by value */
-void passByValue(ConcreteDerived);
+void passDerivedByValue(ConcreteDerived);
 
 /** Return a function-localconcrete base class by simulated reference (pointer) */
 ConcreteBase*    returnBaseByPointer(void);

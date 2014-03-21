@@ -30,13 +30,13 @@ int main()
         choice = getInt();
         switch (choice)
         {
+            case 0: more = false; break;
             case 1: doPassByValue(); break;
             case 2: doReturnByValue(); break;
             case 3: doPassByReference(); break;
             case 4: doReturnByReference(); break;
             case 5: doPassByPointer(); break;
             case 6: doReturnByPointer(); break;
-            case 0: more = false; break;
             default:
                 cout << "\nInvalid choice. " << endl;
         }
@@ -49,27 +49,35 @@ void doPassByPointer(void)
 {
     cout << "\n__________Pass By Pointer__________" << endl;
 
-    cout << "\nCreating base pointer, pb, to base object created on the stack:";
-    ConcreteBase* pb = &ConcreteBase('B');
+    cout << "\nCreating base pointer, pb, to base object created on the heap:";
+    ConcreteBase* pb = new ConcreteBase('B');
     cout << "\nBefore passing, pb points to: " << *pb
          << "\nPassing pb to function:";
-    passByPointer(pb);
+    passBaseByPointer(pb);
     cout << "\nAfter return, pb points to: " << *pb << endl;
 
     cout << "\nCreating derived pointer, pd, to derived object created on the stack:";
-    ConcreteDerived* pd = &ConcreteDerived('D', 2.0);
+    ConcreteDerived* pd = new ConcreteDerived('D', 2.0);
     cout << "\nBefore passing, pd points to: " << *pd
          << "\nPassing pd to function:";
-    passByPointer(pd);
+    passDerivedByPointer(pd);
     cout << "\nAfter return, pd points to: " << *pd << endl;
 
-    cout << "\nPointing base pointer to derived object created on stack:";
-    pb = &ConcreteDerived('D', 1.5);
+    cout << "\nPassing pd to function accepting ConcreteBase pointer:";
+    // passBaseByReference(pd);
+    // cout << "\nAfter return, pd references: " << *pd << endl;
+    cout << "\n\t...is not allowed!" << endl;
+
+    cout << "\nPointing pb to pd:";
+    pb = pd;
     cout << "\nBefore passing, pb points to: " << *pb
          << "\nPassing pb to function:";
-    passByPointer(pb);
+    passBaseByPointer(pb);
     cout << "\nAfter return, pb points to: " << *pb << endl;
 
+    cout << "\n (...Deleting heap objects...) " << endl;
+    delete pb;
+    delete pd;
     cout << "\n (...Returning...) " << endl;
 
 }
@@ -83,7 +91,7 @@ void doPassByReference(void)
     ConcreteBase& rb = b;
     cout << "\nBefore passing, rb references: " << rb
          << "\nPassing rb to function:";
-    passByReference(rb);
+    passBaseByReference(rb);
     cout << "\nAfter return, rb references: " << rb << endl;
 
     cout << "\nCreating derived reference, rd, to derived object, d,"
@@ -92,15 +100,12 @@ void doPassByReference(void)
     ConcreteDerived& rd = d;
     cout << "\nBefore passing, rd references: " << rd
          << "\nPassing rd to function:";
-    passByReference(rd);
+    passDerivedByReference(rd);
     cout << "\nAfter return, rd references: " << rd << endl;
 
-    cout << "\nAssigning Assigning derived object to base reference:";
-    rb = d;
-    cout << "\nBefore passing, rb references: " << rb
-         << "\nPassing pb to function:";
-    passByReference(rb);
-    cout << "\nAfter return, rb references: " << rb << endl;
+    cout << "\nPassing rd to function accepting ConcreteBase reference:";
+    passBaseByReference(rd);
+    cout << "\nAfter return, rd references: " << rd << endl;
 
     cout << "\n (...Returning...) " << endl;
 }
@@ -113,21 +118,26 @@ void doPassByValue(void)
     ConcreteBase b('B');
     cout << "\nBefore passing, b is: " << b
          << "\nPassing b to function:";
-    passByValue(b);
+    passBaseByValue(b);
     cout << "\nAfter return, b is: " << b << endl;
 
     cout << "\nCreating derived object, d, on the stack:";
     ConcreteDerived d('D', 2.0);
     cout << "\nBefore passing, d is: " << d
          << "\nPassing pd to function:";
-    passByValue(d);
+    passDerivedByValue(d);
     cout << "\nAfter return, d is: " << d << endl;
 
-    cout << "\nAssigning derived object to base object:";
-    b = d;
-    cout << "\nBefore passing, b is: " << b
-         << "\nPassing b to function:";
-    passByValue(b);
+    cout << "\nPassing int literal 5 to function accepting ConcreteBase type:";
+    passBaseByValue(5);
+    cout << endl;
+
+    cout << "\nPassing int literal 5 to function accepting ConcreteDerived type:";
+    passDerivedByValue(6);
+    cout << endl;
+
+    cout << "\nPassing d to function accepting ConcreteBase type:";
+    passBaseByValue(d);
     cout << "\nAfter return, b is: " << b << endl;
 
     cout << "\n (...Returning...) " << endl;
