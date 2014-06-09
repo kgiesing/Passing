@@ -230,7 +230,7 @@ void printInstructions(void)
          << "\n\t2\tDo return by value"
          << "\n\t3\tDo pass by reference"
          << "\n\t4\tDo return by reference"
-         << "\n\t5\tDo pass by simulated reference (pointer)"
-         << "\n\t6\tDo return by simulated reference (pointer)"
+         << "\n\t5\tDo pass by pointer"
+         << "\n\t6\tDo return by pointer"
          << endl << PROMPT;
 }
