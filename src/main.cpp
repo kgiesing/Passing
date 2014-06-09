@@ -157,7 +157,7 @@ void doReturnByPointer(void)
     ConcreteDerived* pd = returnDerivedByPointer();
     cout << "\nAfter return, pd points to: " << *pd << endl;
 
-    cout << "\nPointing base pointer "
+    cout << "\nPointing base pointer, pb, "
          << "to returned function-local derived object:";
     pb = returnDerivedByPointer();
     cout << "\nAfter return, pb points to: " << *pb << endl;
@@ -174,13 +174,13 @@ void doReturnByReference(void)
     ConcreteBase& rb = returnBaseByReference();
     cout << "\nAfter return, rb references: " << rb << endl;
 
-    cout << "\nInitializing derived reference, pd, "
+    cout << "\nInitializing derived reference, rd, "
          << "with returned function-local derived object:";
     ConcreteDerived& rd = returnDerivedByReference();
     cout << "\nAfter return, rd references: " << rd << endl;
 
     cout << "\nAssigning returned function-local derived object "
-         << "to base reference:";
+         << "to base reference, rb:";
     rb = returnDerivedByReference();
     cout << "\nAfter return, rb references: " << rb << endl;
 
@@ -194,17 +194,17 @@ void doReturnByValue(void)
     cout << "\nInitializing base object, b, "
          << "with returned function-local base object:";
     ConcreteBase b = returnBaseByValue();
-    cout << "\nAfter return, b is: " << b << endl;
+    cout << "\nAfter returning, b is: " << b << endl;
 
     cout << "\nInitializing derived object, pd, "
-         << "to returned function-local derived object:";
-    ConcreteDerived d = returnDerivedByReference();
-    cout << "\nAfter return, d is: " << d << endl;
+         << "with returned function-local derived object:";
+    ConcreteDerived d = returnDerivedByValue();
+    cout << "\nAfter returning, d is: " << d << endl;
 
     cout << "\nAssigning returned function-local derived object "
-         << "to base object:";
-    b = returnDerivedByReference();
-    cout << "\nAfter return, b is: " << b << endl;
+         << "to base object, b:";
+    b = returnDerivedByValue();
+    cout << "\nAfter returning, b is: " << b << endl;
 
     cout << "\n (...Returning...) " << endl;
 }
@@ -229,8 +229,8 @@ void printInstructions(void)
          << "\n\t1\tDo pass by value"
          << "\n\t2\tDo return by value"
          << "\n\t3\tDo pass by reference"
-         << "\n\t4\tDo return by reference"
+         << "\n\t4\tDo return by (dangling) reference"
          << "\n\t5\tDo pass by pointer"
-         << "\n\t6\tDo return by pointer"
+         << "\n\t6\tDo return by (dangling) pointer"
          << endl << PROMPT;
 }
