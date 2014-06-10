@@ -56,7 +56,7 @@ void doPassByPointer(void)
     passBaseByPointer(pb);
     cout << "\nAfter return, pb points to: " << *pb << endl;
 
-    cout << "\nCreating derived pointer, pd, to derived object created on the stack:";
+    cout << "\nCreating derived pointer, pd, to derived object created on the heap:";
     ConcreteDerived* pd = new ConcreteDerived('D', 2.0);
     cout << "\nBefore passing, pd points to: " << *pd
          << "\nPassing pd to function:";
@@ -68,15 +68,16 @@ void doPassByPointer(void)
     // cout << "\nAfter return, pd references: " << *pd << endl;
     cout << "\n\t...is not allowed!" << endl;
 
-    cout << "\nPointing pb to pd:";
+    cout << "\nDeleting pb:";
+    delete pb;
+    cout << "\nPointing pb to pd..." << endl;
     pb = pd;
     cout << "\nBefore passing, pb points to: " << *pb
          << "\nPassing pb to function:";
     passBaseByPointer(pb);
     cout << "\nAfter return, pb points to: " << *pb << endl;
 
-    cout << "\n (...Deleting heap objects...) " << endl;
-    delete pb;
+    cout << "\nDeleting pd:" << endl;
     delete pd;
     cout << "\n (...Returning...) " << endl;
 
@@ -124,7 +125,7 @@ void doPassByValue(void)
     cout << "\nCreating derived object, d, on the stack:";
     ConcreteDerived d('D', 2.0);
     cout << "\nBefore passing, d is: " << d
-         << "\nPassing pd to function:";
+         << "\nPassing d to function:";
     passDerivedByValue(d);
     cout << "\nAfter return, d is: " << d << endl;
 
