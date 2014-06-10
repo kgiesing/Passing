@@ -5,48 +5,60 @@ using std::cout;
 
 void passBaseByPointer(ConcreteBase* p)
 {
-    cout << "\n\tpassByPointer(*" << *p << ")"
-         << "\n\tAssigning object with value of 'P':";
+    cout << "\n\tpassBaseByPointer(*" << *p << ")";
+    cout << "\n\tCalling getVal():"
+         << p->getVal();
+    cout << "\n\tAssigning object with value of 'P':";
     p = &ConcreteBase('P');
     cout << "\n\tReturning...";
 }
 
 void passDerivedByPointer(ConcreteDerived* p)
 {
-    cout << "\n\tpassByPointer(*" << *p << ")"
-         << "\n\tAssigning object with value of 'P', scale of 0.5:";
+    cout << "\n\tpassDerivedByPointer(*" << *p << ")";
+    cout << "\n\tCalling getVal():"
+         << p->getVal();
+    cout << "\n\tAssigning object with value of 'P', scale of 0.5:";
     p = &ConcreteDerived('P', 0.5);
     cout << "\n\tReturning...";
 }
 
 void passBaseByReference(ConcreteBase& r)
 {
-    cout << "\n\tpassByReference(&" << r << ")"
-         << "\n\tAssigning object with value of 'R':";
+    cout << "\n\tpassBaseByReference(&" << r << ")";
+    cout << "\n\tCalling getVal():"
+         << r.getVal();
+    cout << "\n\tAssigning object with value of 'R':";
     r = ConcreteBase('R');
     cout << "\n\tReturning...";
 }
 
 void passDerivedByReference(ConcreteDerived& r)
 {
-    cout << "\n\tpassByReference(&" << r << ")"
-         << "\n\tAssigning object with value of 'R', scale of 0.5:";
+    cout << "\n\tpassDerivedByReference(&" << r << ")";
+    cout << "\n\tCalling getVal():"
+         << r.getVal();
+    cout << "\n\tAssigning object with value of 'R', scale of 0.5:";
     r = ConcreteDerived('P', 0.5);
     cout << "\n\tReturning...";
 }
 
 void passBaseByValue(ConcreteBase v)
 {
-    cout << "\n\tpassByValue(" << v << ")"
-         << "\n\tAssigning object with value of 'V':";
+    cout << "\n\tpassBaseByValue(" << v << ")";
+    cout << "\n\tCalling getVal():"
+         << v.getVal();
+    cout << "\n\tAssigning object with value of 'V':";
     v = ConcreteBase('V');
     cout << "\n\tReturning...";
 }
 
 void passDerivedByValue(ConcreteDerived v)
 {
-    cout << "\n\tpassByValue(" << v << ")"
-         << "\n\tAssigning object with value of 'V':";
+    cout << "\n\tpassDerivedByValue(" << v << ")";
+    cout << "\n\tCalling getVal():"
+         << v.getVal();
+    cout << "\n\tAssigning object with value of 'V':";
     v = ConcreteDerived('V');
     cout << "\n\tReturning...";
 }
